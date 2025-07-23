@@ -145,14 +145,15 @@ if __name__ == '__main__':
         logger.info("Startup check not available, proceeding...")
     
     # Start the Flask app
-    logger.info("🌐 Starting Flask server...")
+    logger.info("🌐 Starting Flask server in PRODUCTION mode...")
     logger.info("📱 App will be available at: http://localhost:5000")
-    logger.info("📱 Network access at: http://0.0.0.0:5000") 
+    logger.info("📱 Network access at: http://0.0.0.0:5000")
+    logger.info("🔧 For development mode, use: python run_dev.py")
     logger.info("🛑 Press Ctrl+C to stop")
     logger.info("=" * 50)
     
     try:
-        app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)
+        app.run(debug=False, host='0.0.0.0', port=5000, threaded=True)
     except KeyboardInterrupt:
         logger.info("\n🛑 Server stopped by user")
         # Cleanup if needed
