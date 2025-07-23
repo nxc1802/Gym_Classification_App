@@ -1,0 +1,30 @@
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Machine Learning
+tensorflow==2.13.0
+torch==2.0.1
+torchvision==0.15.2
+scikit-learn==1.3.0
+
+# Computer Vision & Video Processing
+mediapipe==0.10.3
+opencv-python==4.8.1.78
+av==10.0.0
+Pillow==10.0.1
+
+# Data Processing
+numpy==1.24.3
+pandas==2.0.3
+
+# YouTube Downloads
+yt-dlp==2023.9.24
+
+# Utilities
+tqdm==4.66.1
+matplotlib==3.7.2
+scipy==1.11.3
+pathlib
+
+# System monitoring (optional)
+psutil==5.9.5 

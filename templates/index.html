@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Exercise Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏋️ Gym Exercise Recognition</h1>
+            <p>Upload a video or provide a YouTube link to recognize gym exercises</p>
+        </header>
+
+        <div class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="input-group">
+                    <label for="video">Upload Video File:</label>
+                    <input type="file" id="video" name="video" accept="video/*">
+                    <small>Supported formats: MP4, AVI, MOV, MKV, WebM, WMV, FLV, M4V, 3GP</small>
+                </div>
+                
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="youtube_url">YouTube URL:</label>
+                    <input type="url" id="youtube_url" name="youtube_url" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+                
+                <button type="submit" id="submitBtn">
+                    <span id="btnText">Analyze Video</span>
+                    <span id="loadingSpinner" class="spinner" style="display: none;"></span>
+                </button>
+            </form>
+        </div>
+
+        <div id="results" class="results-section" style="display: none;">
+            <h2>Analysis Results</h2>
+            
+            <div class="ensemble-result">
+                <h3>🏆 Final Prediction (Ensemble)</h3>
+                <div id="ensembleResults"></div>
+            </div>
+            
+            <div class="individual-results">
+                <h3>📊 Individual Model Results</h3>
+                <div class="model-grid">
+                    <div class="model-result">
+                        <h4>ST-GCN</h4>
+                        <div id="stgcnResults"></div>
+                        <div class="processing-time">
+                            <small>Processing time: <span id="stgcnTime">-</span>s</small>
+                        </div>
+                    </div>
+                    
+                    <div class="model-result">
+                        <h4>Transformer (12rel)</h4>
+                        <div id="transformerResults"></div>
+                        <div class="processing-time">
+                            <small>Processing time: <span id="transformerTime">-</span>s</small>
+                        </div>
+                    </div>
+                    
+                    <div class="model-result">
+                        <h4>Transformer (Angle)</h4>
+                        <div id="angleResults"></div>
+                        <div class="processing-time">
+                            <small>Processing time: <span id="angleTime">-</span>s</small>
+                        </div>
+                    </div>
+                    
+                    <div class="model-result">
+                        <h4>Swin3D</h4>
+                        <div id="swin3dResults"></div>
+                        <div class="processing-time">
+                            <small>Processing time: <span id="swin3dTime">-</span>s</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="processing-summary">
+                <h3>⏱️ Processing Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <label>Total Processing Time:</label>
+                        <span id="totalTime">-</span>s
+                    </div>
+                    <div class="summary-item">
+                        <label>Video Windows Processed:</label>
+                        <span id="windowsProcessed">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <label>MediaPipe Extraction:</label>
+                        <span id="mediapipeTime">-</span>s
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error" class="error-section" style="display: none;">
+            <h3>❌ Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
